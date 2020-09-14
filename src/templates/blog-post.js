@@ -9,6 +9,12 @@ const BlogPost = ({ data }) => {
 	return (
 		<Layout>
 			<h1>{post.frontmatter.title}</h1>
+			<p>
+				Date: {post.frontmatter.date}
+				{". "}
+				Time to read: {post.timeToRead} minutes
+			</p>
+			<hr />
 			<div dangerouslySetInnerHTML={{ __html: post.html }} />
 		</Layout>
 	);
@@ -20,8 +26,9 @@ export const query = graphql`
 			html
 			frontmatter {
 				title
-				date
+				date(formatString: "DD MMMM, YYYY")
 			}
+			timeToRead
 		}
 	}
 `;

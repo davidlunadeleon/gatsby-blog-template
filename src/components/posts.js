@@ -5,7 +5,6 @@ const Posts = ({ posts }) => {
 	const makePostList = () => {
 		return posts.map((postNode) => {
 			const node = postNode.node;
-
 			return (
 				<div key={node.id}>
 					<Link to={node.fields.slug}>
