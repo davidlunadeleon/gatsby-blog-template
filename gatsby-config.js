@@ -1,8 +1,8 @@
 module.exports = {
 	siteMetadata: {
-		title: `davidlunadeleon`,
+		title: `My Blog`,
 		description: `Personal blog about all kinds of topics.`,
-		author: `David Luna de León`
+		author: `The Wonderful Me`
 	},
 	plugins: [
 		`gatsby-plugin-react-helmet`,
@@ -10,7 +10,7 @@ module.exports = {
 			resolve: `gatsby-source-filesystem`,
 			options: {
 				name: `posts`,
-				path: `${__dirname}/posts`
+				path: `${__dirname}/content`
 			}
 		},
 		{
