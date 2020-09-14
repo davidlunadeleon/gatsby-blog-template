@@ -1,17 +1,22 @@
 import React from "react";
+import { Link } from "gatsby";
 
 const Posts = ({ posts }) => {
 	const makePostList = () => {
 		return posts.map((postNode) => {
+			const node = postNode.node;
+
 			return (
-				<div key={postNode.node.id}>
-					<h3>{postNode.node.frontmatter.title}</h3>
+				<div key={node.id}>
+					<Link to={node.fields.slug}>
+						<h3>{node.frontmatter.title}</h3>
+					</Link>
 					<p>
-						Date: {postNode.node.frontmatter.date}
+						Date: {node.frontmatter.date}
 						{". "}
-						Time to read: {postNode.node.timeToRead} minutes
+						Time to read: {node.timeToRead} minutes
 					</p>
-					<p>{postNode.node.excerpt}</p>
+					<p>{node.excerpt}</p>
 				</div>
 			);
 		});
