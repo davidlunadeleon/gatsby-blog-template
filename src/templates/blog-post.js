@@ -12,7 +12,8 @@ const BlogPost = ({ data }) => {
 			<p>
 				Date: {post.frontmatter.date}
 				{". "}
-				Time to read: {post.timeToRead} minutes
+				Time to read: {post.timeToRead}{" "}
+				{post.timeToRead > 1 ? "minutes" : "minute"}
 			</p>
 			<hr />
 			<div dangerouslySetInnerHTML={{ __html: post.html }} />

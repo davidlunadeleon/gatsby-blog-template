@@ -13,7 +13,8 @@ const Posts = ({ posts }) => {
 					<p>
 						Date: {node.frontmatter.date}
 						{". "}
-						Time to read: {node.timeToRead} minutes
+						Time to read: {node.timeToRead}{" "}
+						{node.timeToRead > 1 ? "minutes" : "minute"}
 					</p>
 					<p>{node.excerpt}</p>
 				</div>
