@@ -2,24 +2,22 @@ import React from "react";
 import { graphql } from "gatsby";
 
 import Layout from "../components/layout";
-import SEO from "../components/seo";
 import Posts from "../components/posts";
 
-const IndexPage = ({ data }) => {
+const PostsPage = ({ data, pageContext }) => {
 	return (
 		<Layout>
-			<SEO title="Home" />
-			<h1>Recent posts</h1>
+			<h1>Posts</h1>
 			<Posts posts={data.allMarkdownRemark.edges} />
 		</Layout>
 	);
 };
 
 export const query = graphql`
-	query {
+	query($skip: Int!, $limit: Int!) {
 		allMarkdownRemark(
-			limit: 10
-			skip: 0
+			limit: $limit
+			skip: $skip
 			sort: { fields: frontmatter___date, order: DESC }
 			filter: { fields: { slug: { regex: "/posts/" } } }
 		) {
@@ -41,4 +39,4 @@ export const query = graphql`
 	}
 `;
 
-export default IndexPage;
+export default PostsPage;
