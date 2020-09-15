@@ -1,3 +1,7 @@
 .navbarInlineForm {
-  margin: 0px;
+	margin: 0px;
+}
+
+.navbarComplete {
+	margin-bottom: 2rem;
 }

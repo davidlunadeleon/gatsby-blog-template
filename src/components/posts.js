@@ -1,16 +1,20 @@
 import React from "react";
 import { Link } from "gatsby";
 
+import styles from "./posts.module.css";
+
 const Posts = ({ posts }) => {
 	const makePostList = () => {
 		return posts.map((postNode) => {
 			const node = postNode.node;
 			return (
 				<div key={node.id}>
-					<Link to={node.fields.slug}>
+					<hr />
+					<Link to={node.fields.slug} className="text-info">
 						<h3>{node.frontmatter.title}</h3>
 					</Link>
-					<p>
+					<hr />
+					<p className={styles.articleInfo}>
 						Date: {node.frontmatter.date}
 						{". "}
 						Time to read: {node.timeToRead}{" "}

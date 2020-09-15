@@ -7,7 +7,13 @@ import styles from "./header.module.css";
 
 const Header = ({ siteTitle }) => {
 	return (
-		<Navbar bg="dark" variant="dark" collapseOnSelect expand="lg">
+		<Navbar
+			bg="dark"
+			variant="dark"
+			collapseOnSelect
+			expand="lg"
+			className={styles.navbarComplete}
+		>
 			<Navbar.Brand>
 				<Link className="navbar-brand" to="/">
 					{siteTitle}
