@@ -3,12 +3,18 @@ import { graphql } from "gatsby";
 
 import Layout from "../components/layout";
 import Posts from "../components/posts";
+import Pagination from "../components/pagination";
 
 const PostsPage = ({ data, pageContext }) => {
 	return (
 		<Layout>
 			<h1>Posts</h1>
 			<Posts posts={data.allMarkdownRemark.edges} />
+			<Pagination
+				pagesUrl="/posts"
+				numPages={pageContext.numPages}
+				currPage={pageContext.currentPage}
+			/>
 		</Layout>
 	);
 };
