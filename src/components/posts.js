@@ -35,7 +35,7 @@ const Post = ({ post }) => {
 
 const Posts = ({ posts }) => {
 	return (
-		<div className={styles.articleInfo}>
+		<div className={styles.postsBlock}>
 			{posts.map((postNode) => (
 				<Post post={postNode.node} />
 			))}

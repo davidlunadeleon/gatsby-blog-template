@@ -29,7 +29,7 @@ exports.createPages = async ({ graphql, actions }) => {
 	const { createPage } = actions;
 	const result = await graphql(`
 		query {
-			allMarkdownRemark {
+			allPosts: allMarkdownRemark {
 				edges {
 					node {
 						fields {
@@ -38,10 +38,27 @@ exports.createPages = async ({ graphql, actions }) => {
 					}
 				}
 			}
+			blogPosts: allMarkdownRemark(
+				filter: { fields: { slug: { regex: "/post/" } } }
+			) {
+				edges {
+					node {
+						fields {
+							slug
+						}
+					}
+				}
+			}
+			tags: allMarkdownRemark {
+				group(field: frontmatter___tags) {
+					fieldValue
+					totalCount
+				}
+			}
 		}
 	`);
 
-	result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+	result.data.allPosts.edges.forEach(({ node }) => {
 		createPage({
 			path: node.fields.slug,
 			component: path.resolve("./src/templates/blog-post.js"),
@@ -51,8 +68,9 @@ exports.createPages = async ({ graphql, actions }) => {
 		});
 	});
 
-	const posts = result.data.allMarkdownRemark.edges;
 	const postsPerPage = 5;
+
+	const posts = result.data.blogPosts.edges;
 	const numPages = Math.ceil(posts.length / postsPerPage);
 	Array.from({ length: numPages }).forEach((_, i) => {
 		createPage({
@@ -64,6 +82,28 @@ exports.createPages = async ({ graphql, actions }) => {
 				numPages,
 				currentPage: i + 1
 			}
+		});
+	});
+
+	const tags = result.data.tags.group;
+	tags.forEach((tag) => {
+		const pagesOfTag = Math.ceil(tag.totalCount / postsPerPage);
+		Array.from({ length: pagesOfTag }).forEach((_, i) => {
+			const urlOfTag = tag.fieldValue.replace(" ", "-");
+			createPage({
+				path:
+					i === 0
+						? `/tags/${urlOfTag}`
+						: `/tags/${urlOfTag}/${i + 1}`,
+				component: path.resolve("./src/templates/tags.js"),
+				context: {
+					limit: postsPerPage,
+					skip: i * postsPerPage,
+					numPages: pagesOfTag,
+					currentPage: i + 1,
+					tag: tag.fieldValue
+				}
+			});
 		});
 	});
 };
