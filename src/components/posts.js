@@ -1,22 +1,17 @@
 import React from "react";
 import { Link } from "gatsby";
-import { Button } from "react-bootstrap";
+
+import Tags from "./tags";
 
 import styles from "./posts.module.css";
 
 const Post = ({ post }) => {
-	const addTags = () => {
-		return post.frontmatter.tags.map((tag) => (
-			<Button
-				variant="info"
-				size="sm"
-				as={Link}
-				to={`/tags/${tag.replace(" ", "-")}`}
-				className={styles.tagButton}
-			>
-				{tag}
-			</Button>
-		));
+	const renderTags = () => {
+		return post.frontmatter.tags ? (
+			<Tags tags={post.frontmatter.tags} />
+		) : (
+			<div></div>
+		);
 	};
 
 	return (
@@ -33,17 +28,14 @@ const Post = ({ post }) => {
 				{post.timeToRead > 1 ? "minutes" : "minute"}
 			</p>
 			<p>{post.excerpt}</p>
-			<div className={styles.articleInfo}>
-				Tags:
-				{addTags()}
-			</div>
+			{renderTags()}
 		</div>
 	);
 };
 
 const Posts = ({ posts }) => {
 	return (
-		<div className={styles.postsBlock}>
+		<div className={styles.articleInfo}>
 			{posts.map((postNode) => (
 				<Post post={postNode.node} />
 			))}

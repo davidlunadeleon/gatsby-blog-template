@@ -2,9 +2,18 @@ import React from "react";
 import { graphql } from "gatsby";
 
 import Layout from "../components/layout";
+import Tags from "../components/tags";
 
 const BlogPost = ({ data }) => {
 	const post = data.markdownRemark;
+
+	const renderTags = () => {
+		return post.frontmatter.tags ? (
+			<Tags tags={post.frontmatter.tags} />
+		) : (
+			<div></div>
+		);
+	};
 
 	return (
 		<Layout>
@@ -15,6 +24,7 @@ const BlogPost = ({ data }) => {
 				Time to read: {post.timeToRead}{" "}
 				{post.timeToRead > 1 ? "minutes" : "minute"}
 			</p>
+			{renderTags()}
 			<hr />
 			<div dangerouslySetInnerHTML={{ __html: post.html }} />
 		</Layout>
@@ -28,6 +38,7 @@ export const query = graphql`
 			frontmatter {
 				title
 				date(formatString: "DD MMMM, YYYY")
+				tags
 			}
 			timeToRead
 		}
