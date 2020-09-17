@@ -1,3 +1,12 @@
 .articleInfo {
 	font-weight: bold;
 }
+
+.tagButton {
+	display: inline-block;
+	margin-left: 1rem;
+}
+
+.postsBlock {
+	margin-bottom: 1rem;
+}

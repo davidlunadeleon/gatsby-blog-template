@@ -18,7 +18,7 @@ const IndexPage = ({ data }) => {
 export const query = graphql`
 	query {
 		allMarkdownRemark(
-			limit: 10
+			limit: 3
 			skip: 0
 			sort: { fields: frontmatter___date, order: DESC }
 			filter: { fields: { slug: { regex: "/posts/" } } }
@@ -28,6 +28,7 @@ export const query = graphql`
 					frontmatter {
 						title
 						date(formatString: "DD MMMM, YYYY")
+						tags
 					}
 					excerpt
 					id
