@@ -1,6 +1,7 @@
 ---
 title: "This is the second test"
 date: "2020-07-07"
+tags: ["test", "blog post"]
 ---
 
 # Did you know that this is a test?
