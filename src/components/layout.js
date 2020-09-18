@@ -13,6 +13,7 @@ import Header from "./header";
 import Footer from "./footer";
 
 import "./layout.css";
+import "./styles.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
