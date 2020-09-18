@@ -4,10 +4,12 @@ import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import Posts from "../components/posts";
 import Pagination from "../components/pagination";
+import SEO from "../components/seo";
 
 const PostsPage = ({ data, pageContext }) => {
 	return (
 		<Layout>
+			<SEO title="Posts" />
 			<h1>Posts</h1>
 			<Posts posts={data.allMarkdownRemark.edges} />
 			<Pagination

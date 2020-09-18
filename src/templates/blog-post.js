@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 
 import Layout from "../components/layout";
 import Tags from "../components/tags";
+import SEO from "../components/seo";
 
 const BlogPost = ({ data }) => {
 	const post = data.markdownRemark;
@@ -17,6 +18,7 @@ const BlogPost = ({ data }) => {
 
 	return (
 		<Layout>
+			<SEO title={post.frontmatter.title} />
 			<h1>{post.frontmatter.title}</h1>
 			<p>
 				Date: {post.frontmatter.date}

@@ -32,14 +32,6 @@ const Header = ({ siteTitle }) => {
 						About Me
 					</Link>
 				</Nav>
-				<Form inline className={styles.navbarInlineForm}>
-					<FormControl
-						type="text"
-						placeholder="Search..."
-						className="mr-sm-2"
-					/>
-					<Button variant="outline-info">Search</Button>
-				</Form>
 			</Navbar.Collapse>
 		</Navbar>
 	);

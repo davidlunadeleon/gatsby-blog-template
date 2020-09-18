@@ -4,10 +4,12 @@ import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import Posts from "../components/posts";
 import Pagination from "../components/pagination";
+import SEO from "../components/seo";
 
 const TagsPage = ({ data, pageContext }) => {
 	return (
 		<Layout>
+			<SEO title={`Tag: ${pageContext.tag}`} />
 			<h1>Tag: {pageContext.tag}</h1>
 			<Posts posts={data.allMarkdownRemark.edges} />
 			<Pagination
