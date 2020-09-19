@@ -13,6 +13,7 @@ const Tags = ({ tags }) => {
 				as={Link}
 				to={`/tags/${tag.replace(" ", "-")}`}
 				className={styles.tagButton}
+				key={tag}
 			>
 				{tag}
 			</Button>

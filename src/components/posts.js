@@ -15,7 +15,7 @@ const Post = ({ post }) => {
 	};
 
 	return (
-		<div key={post.id}>
+		<div>
 			<hr />
 			<Link to={post.fields.slug} className="text-info">
 				<h3>{post.frontmatter.title}</h3>
@@ -37,7 +37,7 @@ const Posts = ({ posts }) => {
 	return (
 		<div className={styles.postsBlock}>
 			{posts.map((postNode) => (
-				<Post post={postNode.node} />
+				<Post post={postNode.node} key={postNode.node.id} />
 			))}
 		</div>
 	);
