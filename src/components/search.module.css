@@ -1,5 +1,6 @@
 .searchBarDiv {
 	min-width: 25%;
+	position: relative;
 }
 
 .searchBar {
@@ -9,4 +10,7 @@
 
 .resultsList {
 	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
 }

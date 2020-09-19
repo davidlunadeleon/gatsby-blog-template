@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Index } from "elasticlunr";
 import { Link } from "gatsby";
-import { Form, FormControl, ListGroup } from "react-bootstrap";
+import { Form, FormControl, ListGroup, InputGroup } from "react-bootstrap";
+import { BsSearch } from "react-icons/bs";
 
 import styles from "./search.module.css";
 
@@ -29,12 +30,18 @@ const Search = ({ searchIndex }) => {
 	return (
 		<div className={styles.searchBarDiv}>
 			<Form inline className={styles.searchBar}>
-				<FormControl
-					type="text"
-					placeholder="Search..."
-					className="w-100"
-					onChange={search}
-				/>
+				<InputGroup className="w-100">
+					<InputGroup.Prepend>
+						<InputGroup.Text>
+							<BsSearch />
+						</InputGroup.Text>
+					</InputGroup.Prepend>
+					<FormControl
+						type="text"
+						placeholder="Search..."
+						onChange={search}
+					/>
+				</InputGroup>
 			</Form>
 			<ListGroup className={styles.resultsList}>
 				{listResults()}
