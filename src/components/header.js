@@ -1,11 +1,21 @@
-import { Link } from "gatsby";
+import { Link, graphql, useStaticQuery } from "gatsby";
 import PropTypes from "prop-types";
 import React from "react";
-import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
+
+import Search from "./search";
 
 import styles from "./header.module.css";
 
 const Header = ({ siteTitle }) => {
+	const data = useStaticQuery(graphql`
+		query {
+			siteSearchIndex {
+				index
+			}
+		}
+	`);
+
 	return (
 		<Navbar
 			bg="dark"
@@ -32,6 +42,7 @@ const Header = ({ siteTitle }) => {
 						About Me
 					</Link>
 				</Nav>
+				<Search searchIndex={data.siteSearchIndex.index} />
 			</Navbar.Collapse>
 		</Navbar>
 	);

@@ -1,0 +1,12 @@
+.searchBarDiv {
+	min-width: 25%;
+}
+
+.searchBar {
+	margin: 0;
+	width: auto;
+}
+
+.resultsList {
+	position: absolute;
+}
