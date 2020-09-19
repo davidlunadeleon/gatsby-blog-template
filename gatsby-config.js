@@ -35,6 +35,19 @@ module.exports = {
 				]
 			}
 		},
+		{
+			resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
+			options: {
+				fields: [`title`, `tags`],
+				resolvers: {
+					MarkdownRemark: {
+						title: (node) => node.frontmatter.title,
+						tags: (node) => node.frontmatter.tags,
+						slug: (node) => node.fields.slug
+					}
+				}
+			}
+		},
 		`gatsby-plugin-sharp`,
 		{
 			resolve: `gatsby-plugin-manifest`,
