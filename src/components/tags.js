@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import { Button } from "react-bootstrap";
+import { BsTagFill } from "react-icons/bs";
 
 import styles from "./tags.module.css";
 
@@ -22,8 +23,7 @@ const Tags = ({ tags }) => {
 
 	return (
 		<div className={styles.tagsStyle}>
-			Tags:
-			{addTags()}
+			Tags <BsTagFill />:{addTags()}
 		</div>
 	);
 };

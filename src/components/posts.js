@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
+import { BsFillCalendarFill } from "react-icons/bs";
 
 import Tags from "./tags";
 
@@ -22,7 +23,7 @@ const Post = ({ post }) => {
 			</Link>
 			<hr />
 			<p className={styles.articleInfo}>
-				Date: {post.frontmatter.date}
+				<BsFillCalendarFill /> Date: {post.frontmatter.date}
 				{". "}
 				Time to read: {post.timeToRead}{" "}
 				{post.timeToRead > 1 ? "minutes" : "minute"}

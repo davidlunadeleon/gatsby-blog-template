@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
+import { BiFirstPage, BiLastPage } from "react-icons/bi";
 
 const Pagination = ({ pagesUrl, numPages, currPage }) => {
 	const elipsis = () => (
@@ -44,13 +45,13 @@ const Pagination = ({ pagesUrl, numPages, currPage }) => {
 			<ul className="pagination justify-content-center">
 				<li className={setClassNamePrevious}>
 					<Link className="page-link" to={pagesUrl}>
-						First
+						<BiFirstPage />
 					</Link>
 				</li>
 				{makePageButtons()}
 				<li className={setClassNameNext}>
 					<Link className="page-link" to={`${pagesUrl}/${numPages}`}>
-						Last
+						<BiLastPage />
 					</Link>
 				</li>
 			</ul>

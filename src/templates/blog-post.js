@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
+import { BsFillCalendarFill } from "react-icons/bs";
 
 import Layout from "../components/layout";
 import Tags from "../components/tags";
@@ -21,7 +22,7 @@ const BlogPost = ({ data }) => {
 			<SEO title={post.frontmatter.title} />
 			<h1>{post.frontmatter.title}</h1>
 			<p>
-				Date: {post.frontmatter.date}
+				<BsFillCalendarFill /> Date: {post.frontmatter.date}
 				{". "}
 				Time to read: {post.timeToRead}{" "}
 				{post.timeToRead > 1 ? "minutes" : "minute"}
