@@ -1,99 +1,133 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.com">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
 <h1 align="center">
-  Gatsby's default starter
+  gatsby-blog-template
 </h1>
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+This template is based on the awesome [Gatsby's default starter](https://github.com/gatsbyjs/gatsby-starter-default).
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.com/docs/gatsby-starters/)._
+To learn more about Gatsby go to [https://www.gatsbyjs.com/](https://www.gatsbyjs.com/).
 
-## 🚀 Quick start
+## What this template is
 
-1.  **Create a Gatsby site.**
+This template is a minimalist blog template with the following features:
 
-    Use the Gatsby CLI to create a new site, specifying the default starter.
+-   Simple blog post creation wih markdown.
+-   Tags can be added to each post to group them together.
+-   Post history navigation with pages. Additionally the same navigation of pages with tags.
+-   About me page written in markdown to tell the world about yourself.
+-   Search bar implemented with elasticlunr to help readers find a specific blog by title or tag.
+
+## What this template does not do
+
+If you wish to take this template and modify it, go ahead. Some features may be added in the future, so this list could change.
+
+If you just want to use it as it is and know it's limitations, then those are the following:
+
+-   The author of each blog post is not specified. Although it can be added to each post as part of the markdown body.
+-   There is no image preview added to each post, like some blogs do.
+-   There is no image preview when sharing posts on social media.
+
+## Quick start guide
+
+<details>
+    <summary>Show quick start guide</summary>
+
+1.  Copy this repository
+
+    Use the Gatsby CLI to create your new blog.
 
     ```shell
     # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
+    gatsby new my-default-starter https://github.com/davidlunadeleon/gatsby-blog-template
     ```
 
-1.  **Start developing.**
-
-    Navigate into your new site’s directory and start it up.
+    or
 
     ```shell
-    cd my-default-starter/
+    git clone https://github.com/davidlunadeleon/gatsby-blog-template
+    cd gatsby-blog-template
+    npm install
+    ```
+
+2.  Change your configuration
+
+    You probably want to change the configuration of your new blog to make it your own, so these are some thing to change:
+
+    -   In `gatsby-config.js` in `siteMetadata`:
+        -   Title: title of your blog. This will be used as your 'logo' and site name in each tab the site is open.
+        -   Description: short description about your blog and it's purpose.
+        -   Author: your name or alias.
+    -   Further down in the same file in `gatsby-plugin-sharp`:
+        -   Name: long or detailed of your blog.
+        -   Short name: short name of your blog.
+        -   Icon: icon that will be used in each tab that has the site open.
+
+3.  Develop and preview the changes
+
+    ```shell
     gatsby develop
     ```
 
-1.  **Open the source code and start editing!**
+    This will open your site in `http://localhost:8000/` to preview how it looks. If you are interested in the development part of things, check the [Gatsby tutorial](https://www.gatsbyjs.com/tutorial/). You can open the project in your code editor and explore how it all works.
 
-    Your site is now running at `http://localhost:8000`!
+4.  Write some blog posts
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.com/tutorial/part-five/#introducing-graphiql)._
+    You should probably modify your `about-me.md` file located at `content/` (do not change this name). To modify it follow the next steps.
 
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+    The following rules apply to every blog post you make:
 
-## 🧐 What's inside?
+    -   Add posts to the `content/posts/` directory.
+    -   All posts have the `.md` file extension.
+    -   The name of the file, will be the resulting name of the page in the website. For example `content/posts/test1.md` will result in [http://www.my-blog.com/posts/test1](http://www.my-blog.com/posts/test1).
+    -   The following properties are set inside the file. Add these lines to the beginning of each file you make:
 
-A quick look at the top-level files and directories you'll see in a Gatsby project.
+    ```md
+    ---
+    title: "This is the second test"
+    date: "2020-07-07"
+    tags: ["test", "blog post"]
+    ---
+    ```
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    └── README.md
+    -   Note: `about-me.md` does not have any tags in it.
+    -   After adding the post data, you can write anything you want below. To see examples check the files in `content/`
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+## Deploy
 
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+See Gatsby's guide on how to deploy: [https://www.gatsbyjs.com/docs/deploying-and-hosting/](https://www.gatsbyjs.com/docs/deploying-and-hosting/).
 
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+</details>
 
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
+## To do list
 
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.com/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+**Specific pages:**
 
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.com/docs/gatsby-config/) for more detail).
+-   [x] Add About me page.
+-   [x] Add Posts page.
+-   [x] Add Home page.
+-   [ ] Add Projects page.
+-   [ ] Add custom 404 page.
 
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.com/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
+**Templates:**
 
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.com/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
+-   [x] Add template for a Blog Post page.
+-   [x] Add template to create page with list of blogs.
+-   [x] Add template to create page with list of blogs filtered by tag.
+-   [ ] Add template to create page with list of projects.
+-   [ ] Add tempalte to create page with a specific project.
 
-9.  **`LICENSE`**: This Gatsby starter is licensed under the 0BSD license. This means that you can see this file as a placeholder and replace it with your own license.
+**Components:**
 
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
+-   [x] Add search bar component to lookup posts.
+-   [x] Add header component with nav bar for site navigation.
+-   [x] Add pagination component to show number of pages and links to the previous or next page.
+-   [x] Add tags component to display list of tags present in a blog post.
+-   [ ] Modify footer component to display site information.
+-   [ ] Modify footer component to show links to social media.
 
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+**General:**
 
-12. **`README.md`**: A text file containing useful reference information about your project.
+-   [ ] Add image preview when sharing to social media.
 
-## 🎓 Learning Gatsby
+## License
 
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.com/). Here are some places to start:
-
--   **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.com/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
-
--   **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.com/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
-
-## 💫 Deploy
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/gatsbyjs/gatsby-starter-default)
-
-<!-- AUTO-GENERATED-CONTENT:END -->
+This Gatsby blog template is licensed under the 0BSD license. To read more about it see the [LICENSE file](LICENSE).
