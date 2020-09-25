@@ -6,6 +6,12 @@ This template is based on the awesome [Gatsby's default starter](https://github.
 
 To learn more about Gatsby go to [https://www.gatsbyjs.com/](https://www.gatsbyjs.com/).
 
+## View live example
+
+The live example of this blog template can be found here: [https://gatsbyjs-blog-template.netlify.app/](https://gatsbyjs-blog-template.netlify.app/)
+
+**Note:** this page will feature all of the latest changes made to this template, so you can see them work.
+
 ## What this template is
 
 This template is a minimalist blog template with the following features:

@@ -122,7 +122,7 @@ module.exports = {
 							}
 						`,
 						output: "/rss.xml",
-						title: "My blog's rss feed"
+						title: "gatsby-blog-template rss feed"
 					}
 				]
 			}
