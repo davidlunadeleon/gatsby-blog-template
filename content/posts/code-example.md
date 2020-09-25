@@ -2,6 +2,7 @@
 title: "This is a post with code in it"
 date: "2020-09-18"
 tags: ["programming", "code"]
+type: "post"
 ---
 
 # Post with cool code
