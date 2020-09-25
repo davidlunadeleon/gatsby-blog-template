@@ -95,7 +95,8 @@ module.exports = {
 												"content:encoded":
 													edge.node.html
 											}
-										]
+										],
+										categories: edge.node.frontmatter.tags
 									}
 								);
 							});
@@ -112,7 +113,8 @@ module.exports = {
 							        }
 							        frontmatter {
 							          title
-							          date
+									  date
+									  tags
 							        }
 							      }
 							    }
