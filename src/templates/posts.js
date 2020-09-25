@@ -11,7 +11,10 @@ const PostsPage = ({ data, pageContext }) => {
 		<Layout>
 			<SEO title="Posts" />
 			<h1>Posts</h1>
-			<Posts posts={data.allMarkdownRemark.edges} />
+			<Posts
+				posts={data.allMarkdownRemark.edges}
+				defaultAuthor={data.site.siteMetadata}
+			/>
 			<Pagination
 				pagesUrl="/posts"
 				numPages={pageContext.numPages}
@@ -35,6 +38,8 @@ export const query = graphql`
 						title
 						date(formatString: "DD MMMM, YYYY")
 						tags
+						author
+						authorUrl
 					}
 					excerpt
 					id
@@ -43,6 +48,12 @@ export const query = graphql`
 						slug
 					}
 				}
+			}
+		}
+		site {
+			siteMetadata {
+				author
+				authorUrl
 			}
 		}
 	}

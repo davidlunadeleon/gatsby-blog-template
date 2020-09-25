@@ -3,6 +3,7 @@ module.exports = {
 		title: `My Blog`,
 		description: `Personal blog about all kinds of topics.`,
 		author: `The Wonderful Me`,
+		authorUrl: `https://github.com/davidlunadeleon`,
 		siteUrl: `https://gatsbyjs-blog-template.netlify.app`,
 		socialMedia: [
 			{
