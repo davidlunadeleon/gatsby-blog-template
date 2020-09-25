@@ -3,7 +3,19 @@ module.exports = {
 		title: `My Blog`,
 		description: `Personal blog about all kinds of topics.`,
 		author: `The Wonderful Me`,
-		siteUrl: `https://gatsbyjs-blog-template.netlify.app`
+		siteUrl: `https://gatsbyjs-blog-template.netlify.app`,
+		socialMedia: [
+			{
+				name: "Mastodon",
+				url: "https://joinmastodon.org/",
+				description: "@me@mastodon.social"
+			},
+			{
+				name: "Pixelfed",
+				url: "https://github.com/pixelfed",
+				description: "@me@pixelfed.social"
+			}
+		]
 	},
 	plugins: [
 		`gatsby-plugin-react-helmet`,
