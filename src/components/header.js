@@ -38,7 +38,7 @@ const Header = ({ siteTitle }) => {
 					<Link className="nav-link" to="/posts">
 						Posts
 					</Link>
-					<Link className="nav-link" to="/about-me">
+					<Link className="nav-link" to="/about">
 						About Me
 					</Link>
 				</Nav>
