@@ -3,6 +3,8 @@ title: "This is the second test"
 date: "2020-07-07"
 tags: ["test", "blog post"]
 type: "post"
+author: "Me"
+authorUrl: "https://github.com/davidlunadeleon/gatsby-blog-template"
 ---
 
 # Did you know that this is a test?
