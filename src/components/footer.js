@@ -56,7 +56,7 @@ const Footer = ({ siteUrl, socialMedia }) => {
 	const addSocialMediaLinks = () => {
 		return socialMedia.map((mediaElement) => {
 			return (
-				<li className={styles.footerElement}>
+				<li className={styles.footerElement} key={mediaElement.name}>
 					{selectLogo(mediaElement.name)}{" "}
 					<a href={mediaElement.url} className="text-muted">
 						{mediaElement.name} {mediaElement.description}
