@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "gatsby";
-import { BsFillCalendarFill } from "react-icons/bs";
 
 import Tags from "./tags";
+import PostInformation from "./postInformation";
 
 import styles from "./posts.module.css";
 
@@ -15,21 +15,6 @@ const Post = ({ post, defaultAuthor }) => {
 		);
 	};
 
-	const addAuthor = () => {
-		console.log(defaultAuthor);
-		if (post.frontmatter.author) {
-			return (
-				<a href={post.frontmatter.authorUrl}>
-					{post.frontmatter.author}
-				</a>
-			);
-		} else if (defaultAuthor) {
-			return <a href={defaultAuthor.authorUrl}>{defaultAuthor.author}</a>;
-		} else {
-			return <a href="#">a</a>;
-		}
-	};
-
 	return (
 		<div>
 			<hr />
@@ -37,12 +22,12 @@ const Post = ({ post, defaultAuthor }) => {
 				<h3>{post.frontmatter.title}</h3>
 			</Link>
 			<hr />
-			<p className={styles.articleInfo}>
-				<BsFillCalendarFill /> Date: {post.frontmatter.date}
-				{". "}
-				Time to read: {post.timeToRead}{" "}
-				{post.timeToRead > 1 ? "minutes" : "minute"}. By {addAuthor()}
-			</p>
+			<PostInformation
+				date={post.frontmatter.date}
+				timeToRead={post.frontmatter.timeToRead}
+				authorInfo={post.frontmatter}
+				defaultAuthorInfo={defaultAuthor}
+			/>
 			<p>{post.excerpt}</p>
 			{renderTags()}
 		</div>
