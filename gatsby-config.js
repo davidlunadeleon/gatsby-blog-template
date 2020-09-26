@@ -85,7 +85,8 @@ module.exports = {
 					      title
 					      description
 					      siteUrl
-					      site_url: siteUrl
+						  site_url: siteUrl
+						  author
 					    }
 					  }
 					}
@@ -94,6 +95,9 @@ module.exports = {
 					{
 						serialize: ({ query: { site, allMarkdownRemark } }) => {
 							return allMarkdownRemark.edges.map((edge) => {
+								const author =
+									edge.node.frontmatter.author ??
+									site.siteMetadata.author;
 								return Object.assign(
 									{},
 									edge.node.frontmatter,
@@ -109,7 +113,8 @@ module.exports = {
 													edge.node.html
 											}
 										],
-										categories: edge.node.frontmatter.tags
+										categories: edge.node.frontmatter.tags,
+										author
 									}
 								);
 							});
@@ -126,8 +131,9 @@ module.exports = {
 							        }
 							        frontmatter {
 							          title
-									  date
-									  tags
+							          date
+							          tags
+							          author
 							        }
 							      }
 							    }
