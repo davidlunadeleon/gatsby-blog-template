@@ -39,7 +39,7 @@ const Header = ({ siteTitle }) => {
 						Posts
 					</Link>
 					<Link className="nav-link" to="/about">
-						About Me
+						About
 					</Link>
 				</Nav>
 				<Search searchIndex={data.siteSearchIndex.index} />

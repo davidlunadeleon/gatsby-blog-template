@@ -24,7 +24,7 @@ const Post = ({ post, defaultAuthor }) => {
 			<hr />
 			<PostInformation
 				date={post.frontmatter.date}
-				timeToRead={post.frontmatter.timeToRead}
+				timeToRead={post.timeToRead}
 				authorInfo={post.frontmatter}
 				defaultAuthorInfo={defaultAuthor}
 			/>
