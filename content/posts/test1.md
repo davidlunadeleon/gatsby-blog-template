@@ -2,6 +2,7 @@
 title: "This is the first test"
 date: "2020-09-09"
 tags: ["test", "blog post", "tag1"]
+type: "post"
 ---
 
 # Did you know that this is a test?

@@ -10,7 +10,10 @@ const IndexPage = ({ data }) => {
 		<Layout>
 			<SEO title="Home" />
 			<h1>Recent posts</h1>
-			<Posts posts={data.allMarkdownRemark.edges} />
+			<Posts
+				posts={data.allMarkdownRemark.edges}
+				defaultAuthor={data.site.siteMetadata}
+			/>
 		</Layout>
 	);
 };
@@ -29,6 +32,8 @@ export const query = graphql`
 						title
 						date(formatString: "DD MMMM, YYYY")
 						tags
+						author
+						authorUrl
 					}
 					excerpt
 					id
@@ -37,6 +42,12 @@ export const query = graphql`
 						slug
 					}
 				}
+			}
+		}
+		site {
+			siteMetadata {
+				author
+				authorUrl
 			}
 		}
 	}

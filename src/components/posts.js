@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "gatsby";
-import { BsFillCalendarFill } from "react-icons/bs";
 
 import Tags from "./tags";
+import PostInformation from "./postInformation";
 
 import styles from "./posts.module.css";
 
-const Post = ({ post }) => {
+const Post = ({ post, defaultAuthor }) => {
 	const renderTags = () => {
 		return post.frontmatter.tags ? (
 			<Tags tags={post.frontmatter.tags} />
@@ -22,23 +22,27 @@ const Post = ({ post }) => {
 				<h3>{post.frontmatter.title}</h3>
 			</Link>
 			<hr />
-			<p className={styles.articleInfo}>
-				<BsFillCalendarFill /> Date: {post.frontmatter.date}
-				{". "}
-				Time to read: {post.timeToRead}{" "}
-				{post.timeToRead > 1 ? "minutes" : "minute"}
-			</p>
+			<PostInformation
+				date={post.frontmatter.date}
+				timeToRead={post.timeToRead}
+				authorInfo={post.frontmatter}
+				defaultAuthorInfo={defaultAuthor}
+			/>
 			<p>{post.excerpt}</p>
 			{renderTags()}
 		</div>
 	);
 };
 
-const Posts = ({ posts }) => {
+const Posts = ({ posts, defaultAuthor }) => {
 	return (
 		<div className={styles.postsBlock}>
 			{posts.map((postNode) => (
-				<Post post={postNode.node} key={postNode.node.id} />
+				<Post
+					post={postNode.node}
+					key={postNode.node.id}
+					defaultAuthor={defaultAuthor}
+				/>
 			))}
 		</div>
 	);
