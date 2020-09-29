@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "gatsby";
+import { Link } from "gatsby-plugin-intl";
 import { BiFirstPage, BiLastPage } from "react-icons/bi";
 
 import styles from "./pagination.module.css";

@@ -40,7 +40,7 @@ export const query = graphql`
 			html
 			frontmatter {
 				title
-				date(formatString: "DD MMMM, YYYY")
+				date
 				tags
 				author
 				authorUrl

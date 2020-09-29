@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
+import { useIntl } from "gatsby-plugin-intl";
 
 import Layout from "../components/layout";
 import Posts from "../components/posts";
@@ -7,10 +8,18 @@ import Pagination from "../components/pagination";
 import SEO from "../components/seo";
 
 const TagsPage = ({ data, pageContext }) => {
+	const intl = useIntl();
+
 	return (
 		<Layout>
-			<SEO title={`Tag: ${pageContext.tag}`} />
-			<h1>Tag: {pageContext.tag}</h1>
+			<SEO
+				title={`${intl.formatMessage({ id: "tag" })}: ${
+					pageContext.tag
+				}`}
+			/>
+			<h1>
+				{intl.formatMessage({ id: "tag" })}: {pageContext.tag}
+			</h1>
 			<Posts
 				posts={data.allMarkdownRemark.edges}
 				defaultAuthor={data.site.siteMetadata}
@@ -39,7 +48,7 @@ export const query = graphql`
 				node {
 					frontmatter {
 						title
-						date(formatString: "DD MMMM, YYYY")
+						date
 						tags
 						author
 						authorUrl
