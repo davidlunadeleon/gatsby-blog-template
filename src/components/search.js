@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Index } from "elasticlunr";
-import { Link } from "gatsby";
 import { Form, FormControl, ListGroup, InputGroup } from "react-bootstrap";
+import { useIntl, Link } from "gatsby-plugin-intl";
 import { BsSearch } from "react-icons/bs";
 
 import styles from "./search.module.css";
 
 const Search = ({ searchIndex }) => {
+	const intl = useIntl();
+
 	const [results, setResults] = useState([]);
 	const index = Index.load(searchIndex);
 
@@ -38,7 +40,9 @@ const Search = ({ searchIndex }) => {
 					</InputGroup.Prepend>
 					<FormControl
 						type="text"
-						placeholder="Search..."
+						placeholder={`${intl.formatMessage({
+							id: "search"
+						})}...`}
 						onChange={search}
 					/>
 				</InputGroup>

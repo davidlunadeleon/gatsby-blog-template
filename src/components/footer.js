@@ -1,4 +1,5 @@
 import React from "react";
+import { useIntl } from "gatsby-plugin-intl";
 import { AiFillGithub } from "react-icons/ai";
 import {
 	FaRssSquare,
@@ -20,6 +21,8 @@ import { GrMail } from "react-icons/gr";
 import styles from "./footer.module.css";
 
 const Footer = ({ siteUrl, socialMedia }) => {
+	const intl = useIntl();
+
 	const selectLogo = (name) => {
 		switch (name) {
 			case "Mastodon":
@@ -73,7 +76,7 @@ const Footer = ({ siteUrl, socialMedia }) => {
 			<hr />
 			<ul className={`list-unstyled row ${styles.footerList}`}>
 				<li className="col-sm">
-					<strong>Source Code</strong>
+					<strong>{intl.formatMessage({ id: "source_code" })}</strong>
 					<ul className={styles.footerColList}>
 						<li className={styles.footerElement}>
 							<AiFillGithub />{" "}
@@ -87,7 +90,9 @@ const Footer = ({ siteUrl, socialMedia }) => {
 					</ul>
 				</li>
 				<li className="col-sm">
-					<strong>Social media, contact and feed</strong>
+					<strong>
+						{intl.formatMessage({ id: "social_media_and_more" })}
+					</strong>
 					<ul className={styles.footerColList}>
 						<li className={styles.footerElement}>
 							<FaRssSquare />{" "}
