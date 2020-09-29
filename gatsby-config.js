@@ -1,3 +1,5 @@
+const { languages, defaultLanguage } = require("./config");
+
 module.exports = {
 	siteMetadata: {
 		title: `My Blog`,
@@ -150,8 +152,8 @@ module.exports = {
 			resolve: `gatsby-plugin-intl`,
 			options: {
 				path: `${__dirname}/locales`,
-				languages: [`en`, `es`],
-				defaultLanguage: `en`,
+				languages,
+				defaultLanguage,
 				redirect: true
 			}
 		}

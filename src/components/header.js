@@ -13,10 +13,7 @@ import Search from "./search";
 
 import styles from "./header.module.css";
 
-const languageName = {
-	en: "English",
-	es: "Español"
-};
+import { languageName } from "../../config";
 
 const Header = ({ siteTitle }) => {
 	const intl = useIntl();
