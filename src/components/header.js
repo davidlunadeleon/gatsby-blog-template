@@ -1,12 +1,22 @@
 import { graphql, useStaticQuery } from "gatsby";
-import { Link, useIntl } from "gatsby-plugin-intl";
+import {
+	Link,
+	useIntl,
+	IntlContextConsumer,
+	changeLocale
+} from "gatsby-plugin-intl";
 import PropTypes from "prop-types";
 import React from "react";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
 import Search from "./search";
 
 import styles from "./header.module.css";
+
+const languageName = {
+	en: "English",
+	es: "Español"
+};
 
 const Header = ({ siteTitle }) => {
 	const intl = useIntl();
@@ -18,6 +28,23 @@ const Header = ({ siteTitle }) => {
 			}
 		}
 	`);
+
+	const makeLanguageList = () => {
+		return (
+			<IntlContextConsumer>
+				{({ languages, language: currentLocale }) =>
+					languages.map((language) => (
+						<NavDropdown.Item
+							key={language}
+							onClick={() => changeLocale(language)}
+						>
+							{languageName[language]}
+						</NavDropdown.Item>
+					))
+				}
+			</IntlContextConsumer>
+		);
+	};
 
 	return (
 		<Navbar
@@ -44,6 +71,9 @@ const Header = ({ siteTitle }) => {
 					<Link className="nav-link" to="/about">
 						{intl.formatMessage({ id: "about" })}
 					</Link>
+					<NavDropdown title={intl.formatMessage({ id: "language" })}>
+						{makeLanguageList()}
+					</NavDropdown>
 				</Nav>
 				<Search searchIndex={data.siteSearchIndex.index} />
 			</Navbar.Collapse>
