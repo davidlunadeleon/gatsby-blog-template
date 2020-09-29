@@ -13,5 +13,6 @@
 	"search": "Search",
 	"minute": "minute",
 	"minutes": "minutes",
-	"language": "Language"
+	"language": "Language",
+	"error_404": "Error 404: Not found."
 }
