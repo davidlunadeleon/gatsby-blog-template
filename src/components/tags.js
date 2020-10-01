@@ -1,11 +1,13 @@
 import React from "react";
-import { Link } from "gatsby";
+import { Link, useIntl } from "gatsby-plugin-intl";
 import { Button } from "react-bootstrap";
 import { BsTagFill } from "react-icons/bs";
 
 import styles from "./tags.module.css";
 
 const Tags = ({ tags }) => {
+	const intl = useIntl();
+
 	const addTags = () => {
 		return tags.map((tag) => (
 			<Button
@@ -23,7 +25,7 @@ const Tags = ({ tags }) => {
 
 	return (
 		<div className={styles.tagsStyle}>
-			Tags <BsTagFill />:{addTags()}
+			{intl.formatMessage({ id: "tags" })} <BsTagFill />:{addTags()}
 		</div>
 	);
 };

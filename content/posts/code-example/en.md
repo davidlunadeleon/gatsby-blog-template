@@ -5,11 +5,12 @@ tags: ["programming", "code"]
 type: "post"
 author: "Me"
 authorUrl: "https://github.com/davidlunadeleon/gatsby-blog-template"
+lang: "en"
 ---
 
 # Post with cool code
 
-I'm adding this post to test the rendering of code snippets in markdwon files.
+I'm adding this post to test the rendering of code snippets in markdown files.
 
 ## Testing with C++
 

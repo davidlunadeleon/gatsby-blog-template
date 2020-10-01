@@ -5,6 +5,7 @@ tags: ["test", "blog post"]
 type: "post"
 author: "Me"
 authorUrl: "https://github.com/davidlunadeleon/gatsby-blog-template"
+lang: "en"
 ---
 
 # Did you know that this is a test?

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "gatsby";
+import { Link } from "gatsby-plugin-intl";
 
 import Tags from "./tags";
 import PostInformation from "./postInformation";
@@ -18,7 +18,7 @@ const Post = ({ post, defaultAuthor }) => {
 	return (
 		<div>
 			<hr />
-			<Link to={post.fields.slug} className="text-info">
+			<Link to={post.fields.path} className="text-info">
 				<h3>{post.frontmatter.title}</h3>
 			</Link>
 			<hr />
