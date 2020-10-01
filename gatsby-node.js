@@ -99,12 +99,6 @@ exports.createPages = async ({ graphql, actions }) => {
 					}
 				}
 			}
-			tags: allMarkdownRemark {
-				group(field: frontmatter___tags) {
-					fieldValue
-					totalCount
-				}
-			}
 		}
 	`);
 
@@ -141,7 +135,7 @@ exports.createPages = async ({ graphql, actions }) => {
 		Array.from({ length: numPages }).forEach((_, i) => {
 			const pagePath = i === 0 ? `/posts` : `/posts/${i + 1}`;
 			const slug = `/${lang}${pagePath}`;
-			pagesSet.add(path);
+			pagesSet.add(slug);
 			createPage({
 				path: slug,
 				component: path.resolve("./src/templates/posts.js"),
@@ -165,27 +159,57 @@ exports.createPages = async ({ graphql, actions }) => {
 		});
 	});
 
-	const tags = result.data.tags.group;
-	tags.forEach((tag) => {
-		const pagesOfTag = Math.ceil(tag.totalCount / postsPerPage);
-		Array.from({ length: pagesOfTag }).forEach((_, i) => {
-			const urlOfTag = tag.fieldValue.replace(" ", "-");
-			createPage({
-				path:
+	for (lang of languages) {
+		const tagsResult = await graphql(
+			`
+				query($lang: String!) {
+					tags: allMarkdownRemark(
+						filter: { frontmatter: { lang: { eq: $lang } } }
+					) {
+						group(field: frontmatter___tags) {
+							fieldValue
+							totalCount
+						}
+					}
+				}
+			`,
+			{ lang }
+		);
+		const tags = tagsResult.data.tags.group;
+		tags.forEach((tag) => {
+			const pagesOfTag = Math.ceil(tag.totalCount / postsPerPage);
+			Array.from({ length: pagesOfTag }).forEach((_, i) => {
+				const urlOfTag = tag.fieldValue.replace(" ", "-");
+				const pagePath =
 					i === 0
 						? `/tags/${urlOfTag}`
-						: `/tags/${urlOfTag}/${i + 1}`,
-				component: path.resolve("./src/templates/tags.js"),
-				context: {
-					limit: postsPerPage,
-					skip: i * postsPerPage,
-					numPages: pagesOfTag,
-					currentPage: i + 1,
-					tag: tag.fieldValue
-				}
+						: `/tags/${urlOfTag}/${i + 1}`;
+				const slug = `/${lang}${pagePath}`;
+				pagesSet.add(slug);
+				createPage({
+					path: slug,
+					component: path.resolve("./src/templates/tags.js"),
+					context: {
+						limit: postsPerPage,
+						skip: i * postsPerPage,
+						numPages: pagesOfTag,
+						currentPage: i + 1,
+						tag: tag.fieldValue,
+						lang,
+						type: "static",
+						intl: {
+							language: lang,
+							languages,
+							messages: getMessages(lang),
+							routed: true,
+							originalPath: pagePath,
+							redirect: false
+						}
+					}
+				});
 			});
 		});
-	});
+	}
 };
 
 exports.onCreatePage = async ({ page, actions }) => {

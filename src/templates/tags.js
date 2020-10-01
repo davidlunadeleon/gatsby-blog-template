@@ -34,14 +34,14 @@ const TagsPage = ({ data, pageContext }) => {
 };
 
 export const query = graphql`
-	query($skip: Int!, $limit: Int!, $tag: String) {
+	query($skip: Int!, $limit: Int!, $tag: String!, $lang: String!) {
 		allMarkdownRemark(
 			limit: $limit
 			skip: $skip
 			sort: { fields: frontmatter___date, order: DESC }
 			filter: {
 				fields: { slug: { regex: "/posts/" } }
-				frontmatter: { tags: { in: [$tag] } }
+				frontmatter: { tags: { in: [$tag] }, lang: { eq: $lang } }
 			}
 		) {
 			edges {
