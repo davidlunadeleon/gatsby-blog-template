@@ -1,4 +1,4 @@
-const { languages, defaultLanguage } = require("./config");
+const { languages, defaultLanguage, languageName } = require("./config");
 
 const generateFeeds = () => {
 	return languages.map((lang) => {
@@ -43,7 +43,7 @@ const generateFeeds = () => {
 				}
 						`,
 			output: `/rss_${lang}.xml`,
-			title: "gatsby-blog-template rss feed"
+			title: `gatsby-blog-template rss feed. ${languageName[lang]}`
 		};
 	});
 };

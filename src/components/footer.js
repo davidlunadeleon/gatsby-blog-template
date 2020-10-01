@@ -20,6 +20,8 @@ import { GrMail } from "react-icons/gr";
 
 import styles from "./footer.module.css";
 
+import { languages, languageName } from "../../config";
+
 const Footer = ({ siteUrl, socialMedia }) => {
 	const intl = useIntl();
 
@@ -69,6 +71,22 @@ const Footer = ({ siteUrl, socialMedia }) => {
 		});
 	};
 
+	const addRssFeeds = () => {
+		return languages.map((lang) => {
+			return (
+				<li className={styles.footerElement}>
+					<FaRssSquare />{" "}
+					<a
+						href={`${siteUrl}/rss_${lang}.xml`}
+						className="text-muted"
+					>
+						RSS {languageName[lang]}
+					</a>
+				</li>
+			);
+		});
+	};
+
 	return (
 		<footer
 			className={`justify-content-center ${styles.footer} text-muted`}
@@ -94,16 +112,8 @@ const Footer = ({ siteUrl, socialMedia }) => {
 						{intl.formatMessage({ id: "social_media_and_more" })}
 					</strong>
 					<ul className={styles.footerColList}>
-						<li className={styles.footerElement}>
-							<FaRssSquare />{" "}
-							<a
-								href={`${siteUrl}/rss.xml`}
-								className="text-muted"
-							>
-								RSS
-							</a>
-						</li>
 						{addSocialMediaLinks()}
+						{addRssFeeds()}
 					</ul>
 				</li>
 			</ul>
