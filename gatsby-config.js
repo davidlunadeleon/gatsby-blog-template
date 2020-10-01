@@ -1,5 +1,53 @@
 const { languages, defaultLanguage } = require("./config");
 
+const generateFeeds = () => {
+	return languages.map((lang) => {
+		return {
+			serialize: ({ query: { site, allMarkdownRemark } }) => {
+				return allMarkdownRemark.edges.map((edge) => {
+					const author =
+						edge.node.frontmatter.author ??
+						site.siteMetadata.author;
+					return Object.assign({}, edge.node.frontmatter, {
+						description: edge.node.excerpt,
+						date: edge.node.frontmatter.date,
+						url: site.siteMetadata.siteUrl + edge.node.fields.slug,
+						custom_elements: [
+							{
+								"content:encoded": edge.node.html
+							}
+						],
+						categories: edge.node.frontmatter.tags,
+						author
+					});
+				});
+			},
+			query: `
+				{
+				  allMarkdownRemark(sort: {order: DESC, fields: [frontmatter___date]}, filter: {frontmatter: {type: {eq: "post"}, lang: {eq: "${lang}"}}}) {
+				    edges {
+				      node {
+				        excerpt
+				        fields {
+				          slug
+				        }
+				        frontmatter {
+				          title
+				          date
+				          tags
+				          author
+				        }
+				      }
+				    }
+				  }
+				}
+						`,
+			output: `/rss_${lang}.xml`,
+			title: "gatsby-blog-template rss feed"
+		};
+	});
+};
+
 module.exports = {
 	siteMetadata: {
 		title: `My Blog`,
@@ -93,59 +141,7 @@ module.exports = {
 					  }
 					}
 				`,
-				feeds: [
-					{
-						serialize: ({ query: { site, allMarkdownRemark } }) => {
-							return allMarkdownRemark.edges.map((edge) => {
-								const author =
-									edge.node.frontmatter.author ??
-									site.siteMetadata.author;
-								return Object.assign(
-									{},
-									edge.node.frontmatter,
-									{
-										description: edge.node.excerpt,
-										date: edge.node.frontmatter.date,
-										url:
-											site.siteMetadata.siteUrl +
-											edge.node.fields.slug,
-										custom_elements: [
-											{
-												"content:encoded":
-													edge.node.html
-											}
-										],
-										categories: edge.node.frontmatter.tags,
-										author
-									}
-								);
-							});
-						},
-						query: `
-							{
-							  allMarkdownRemark(sort: {order: DESC, fields: [frontmatter___date]}, filter: {frontmatter: {type: {eq: "post"}}}) {
-							    edges {
-							      node {
-							        excerpt
-							        html
-							        fields {
-							          slug
-							        }
-							        frontmatter {
-							          title
-							          date
-							          tags
-							          author
-							        }
-							      }
-							    }
-							  }
-							}
-						`,
-						output: "/rss.xml",
-						title: "gatsby-blog-template rss feed"
-					}
-				]
+				feeds: generateFeeds()
 			}
 		},
 		{
