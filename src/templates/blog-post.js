@@ -1,10 +1,10 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { BsFillCalendarFill } from "react-icons/bs";
 
 import Layout from "../components/layout";
 import Tags from "../components/tags";
 import SEO from "../components/seo";
+import PostInformation from "../components/postInformation";
 
 const BlogPost = ({ data }) => {
 	const post = data.markdownRemark;
@@ -21,12 +21,12 @@ const BlogPost = ({ data }) => {
 		<Layout>
 			<SEO title={post.frontmatter.title} />
 			<h1>{post.frontmatter.title}</h1>
-			<p>
-				<BsFillCalendarFill /> Date: {post.frontmatter.date}
-				{". "}
-				Time to read: {post.timeToRead}{" "}
-				{post.timeToRead > 1 ? "minutes" : "minute"}
-			</p>
+			<PostInformation
+				date={post.frontmatter.date}
+				timeToRead={post.timeToRead}
+				authorInfo={post.frontmatter}
+				defaultAuthorInfo={data.site.siteMetadata}
+			/>
 			{renderTags()}
 			<hr />
 			<div dangerouslySetInnerHTML={{ __html: post.html }} />
@@ -40,10 +40,18 @@ export const query = graphql`
 			html
 			frontmatter {
 				title
-				date(formatString: "DD MMMM, YYYY")
+				date
 				tags
+				author
+				authorUrl
 			}
 			timeToRead
+		}
+		site {
+			siteMetadata {
+				author
+				authorUrl
+			}
 		}
 	}
 `;

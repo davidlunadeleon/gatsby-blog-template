@@ -1,18 +1,22 @@
 ---
-title: "This is the second test"
+title: "Esta es la segunda prueba"
 date: "2020-07-07"
-tags: ["test", "blog post"]
+tags: ["prueba", "blog post"]
+type: "post"
+author: "Me"
+authorUrl: "https://github.com/davidlunadeleon/gatsby-blog-template"
+lang: "es"
 ---
 
-# Did you know that this is a test?
+# ¿Sabías que esto es un test?
 
-Here's a list of things a test can do:
+Aquí hay una lista que las pruebas pueden hacer:
 
--   Idk
--   test
--   more test
+-   No lo sé
+-   probar
+-   probar más
 
-## Lorem Ipsum Time
+## Tiempo de Lorem Ipsum
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam congue dui quis tellus accumsan, et pellentesque lorem fermentum. Donec volutpat malesuada nisl sed euismod. Vivamus ex dui, aliquet sit amet viverra nec, semper eget ligula. Proin tincidunt turpis enim, sed pellentesque nisl rutrum et. Donec tincidunt pretium velit, ac imperdiet eros mattis eu. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum pharetra nisl et elit viverra, et elementum urna suscipit. Duis tellus arcu, efficitur venenatis nisi ut, scelerisque pulvinar orci. Integer id sagittis felis, at faucibus dolor. Mauris eros augue, egestas vel mi sed, iaculis facilisis eros. Integer sit amet eros nulla. Etiam sit amet ultricies eros. Nulla hendrerit fringilla eros, eu imperdiet nunc aliquam sit amet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse ante dolor, hendrerit vitae vehicula non, tempor non felis.
 
@@ -26,4 +30,4 @@ Morbi a magna venenatis, fermentum lorem sed, congue ante. Etiam ac posuere ante
 
 Cras efficitur dignissim eros, lobortis ullamcorper ipsum convallis in. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur iaculis ligula sit amet condimentum dignissim. Maecenas at sem a nunc ullamcorper maximus. Sed quam lorem, ultrices id posuere sit amet, dignissim eu nisl. Donec vitae egestas diam. Etiam cursus sem vel magna maximus, sit amet pretium nunc consequat. Vestibulum at maximus orci. Pellentesque id finibus metus. Cras ac finibus arcu, sed sollicitudin arcu. Praesent vestibulum placerat lobortis.
 
-Generated 6 paragraphs, 554 words, 3744 bytes of [Lorem Ipsum](https://www.lipsum.com/)
+6 párrafos generados, 554 palabras, 3744 bytes de [Lorem Ipsum](https://www.lipsum.com/)

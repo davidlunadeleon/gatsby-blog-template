@@ -2,11 +2,15 @@
 title: "This is a post with code in it"
 date: "2020-09-18"
 tags: ["programming", "code"]
+type: "post"
+author: "Me"
+authorUrl: "https://github.com/davidlunadeleon/gatsby-blog-template"
+lang: "en"
 ---
 
 # Post with cool code
 
-I'm adding this post to test the rendering of code snippets in markdwon files.
+I'm adding this post to test the rendering of code snippets in markdown files.
 
 ## Testing with C++
 

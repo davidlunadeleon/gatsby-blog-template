@@ -1,6 +1,8 @@
 import React from "react";
-import { Link } from "gatsby";
+import { Link } from "gatsby-plugin-intl";
 import { BiFirstPage, BiLastPage } from "react-icons/bi";
+
+import styles from "./pagination.module.css";
 
 const Pagination = ({ pagesUrl, numPages, currPage }) => {
 	const elipsis = () => (
@@ -42,7 +44,9 @@ const Pagination = ({ pagesUrl, numPages, currPage }) => {
 
 	return (
 		<nav aria-label="Page navigation">
-			<ul className="pagination justify-content-center">
+			<ul
+				className={`pagination justify-content-center ${styles.paginationDiv}`}
+			>
 				<li className={setClassNamePrevious}>
 					<Link className="page-link" to={pagesUrl}>
 						<BiFirstPage />

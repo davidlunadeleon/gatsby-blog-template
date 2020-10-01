@@ -1,27 +1,37 @@
 import React, { useState } from "react";
 import { Index } from "elasticlunr";
-import { Link } from "gatsby";
 import { Form, FormControl, ListGroup, InputGroup } from "react-bootstrap";
+import { useIntl, Link } from "gatsby-plugin-intl";
 import { BsSearch } from "react-icons/bs";
 
 import styles from "./search.module.css";
 
-const Search = ({ searchIndex }) => {
+const Search = ({ searchIndex, currLang }) => {
+	const intl = useIntl();
+
 	const [results, setResults] = useState([]);
 	const index = Index.load(searchIndex);
 
 	const search = (event) => {
-		setResults(
+		if (event.target.value === "") {
+			setResults([]);
+		} else {
+			let ans = [];
 			index
 				.search(event.target.value, { expand: true })
-				.map(({ ref }) => index.documentStore.getDoc(ref))
-				.slice(0, 6)
-		);
+				.forEach(({ ref }) => {
+					const doc = index.documentStore.getDoc(ref);
+					if (doc.lang === currLang) {
+						ans.push(doc);
+					}
+				});
+			setResults(ans.slice(0, 6));
+		}
 	};
 
 	const listResults = () => {
 		return results.map((page) => (
-			<ListGroup.Item key={page.title}>
+			<ListGroup.Item key={page.id}>
 				<Link to={page.slug}>{page.title}</Link>
 			</ListGroup.Item>
 		));
@@ -38,7 +48,9 @@ const Search = ({ searchIndex }) => {
 					</InputGroup.Prepend>
 					<FormControl
 						type="text"
-						placeholder="Search..."
+						placeholder={`${intl.formatMessage({
+							id: "search"
+						})}...`}
 						onChange={search}
 					/>
 				</InputGroup>

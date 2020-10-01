@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
+import { useIntl } from "gatsby-plugin-intl";
 
 import Layout from "../components/layout";
 import Posts from "../components/posts";
@@ -7,11 +8,16 @@ import Pagination from "../components/pagination";
 import SEO from "../components/seo";
 
 const PostsPage = ({ data, pageContext }) => {
+	const intl = useIntl();
+
 	return (
 		<Layout>
-			<SEO title="Posts" />
-			<h1>Posts</h1>
-			<Posts posts={data.allMarkdownRemark.edges} />
+			<SEO title={intl.formatMessage({ id: "posts" })} />
+			<h1>{intl.formatMessage({ id: "posts" })}</h1>
+			<Posts
+				posts={data.allMarkdownRemark.edges}
+				defaultAuthor={data.site.siteMetadata}
+			/>
 			<Pagination
 				pagesUrl="/posts"
 				numPages={pageContext.numPages}
@@ -22,27 +28,39 @@ const PostsPage = ({ data, pageContext }) => {
 };
 
 export const query = graphql`
-	query($skip: Int!, $limit: Int!) {
+	query($skip: Int!, $limit: Int!, $lang: String!) {
 		allMarkdownRemark(
 			limit: $limit
 			skip: $skip
 			sort: { fields: frontmatter___date, order: DESC }
-			filter: { fields: { slug: { regex: "/posts/" } } }
+			filter: {
+				fields: { slug: { regex: "/posts/" } }
+				frontmatter: { lang: { eq: $lang } }
+			}
 		) {
 			edges {
 				node {
 					frontmatter {
 						title
-						date(formatString: "DD MMMM, YYYY")
+						date
 						tags
+						author
+						authorUrl
 					}
 					excerpt
 					id
 					timeToRead
 					fields {
 						slug
+						path
 					}
 				}
+			}
+		}
+		site {
+			siteMetadata {
+				author
+				authorUrl
 			}
 		}
 	}

@@ -1,6 +1,8 @@
 ---
 title: "About me"
 date: "2020-09-14"
+type: "static"
+lang: "en"
 ---
 
 # About me
