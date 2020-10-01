@@ -28,12 +28,15 @@ const PostsPage = ({ data, pageContext }) => {
 };
 
 export const query = graphql`
-	query($skip: Int!, $limit: Int!) {
+	query($skip: Int!, $limit: Int!, $lang: String!) {
 		allMarkdownRemark(
 			limit: $limit
 			skip: $skip
 			sort: { fields: frontmatter___date, order: DESC }
-			filter: { fields: { slug: { regex: "/posts/" } } }
+			filter: {
+				fields: { slug: { regex: "/posts/" } }
+				frontmatter: { lang: { eq: $lang } }
+			}
 		) {
 			edges {
 				node {

@@ -91,6 +91,10 @@ exports.createPages = async ({ graphql, actions }) => {
 					node {
 						fields {
 							slug
+							path
+						}
+						frontmatter {
+							lang
 						}
 					}
 				}
@@ -126,18 +130,38 @@ exports.createPages = async ({ graphql, actions }) => {
 
 	const postsPerPage = 5;
 
-	const posts = result.data.blogPosts.edges;
-	const numPages = Math.ceil(posts.length / postsPerPage);
-	Array.from({ length: numPages }).forEach((_, i) => {
-		createPage({
-			path: i === 0 ? `/posts` : `/posts/${i + 1}`,
-			component: path.resolve("./src/templates/posts.js"),
-			context: {
-				limit: postsPerPage,
-				skip: i * postsPerPage,
-				numPages,
-				currentPage: i + 1
+	languages.forEach((lang) => {
+		const posts = [];
+		result.data.blogPosts.edges.forEach(({ node }) => {
+			if (node.frontmatter.lang === lang) {
+				posts.push(node);
 			}
+		});
+		const numPages = Math.ceil(posts.length / postsPerPage);
+		Array.from({ length: numPages }).forEach((_, i) => {
+			const pagePath = i === 0 ? `/posts` : `/posts/${i + 1}`;
+			const slug = `/${lang}${pagePath}`;
+			pagesSet.add(path);
+			createPage({
+				path: slug,
+				component: path.resolve("./src/templates/posts.js"),
+				context: {
+					limit: postsPerPage,
+					skip: i * postsPerPage,
+					numPages,
+					currentPage: i + 1,
+					lang,
+					type: "static",
+					intl: {
+						language: lang,
+						languages,
+						messages: getMessages(lang),
+						routed: true,
+						originalPath: pagePath,
+						redirect: false
+					}
+				}
+			});
 		});
 	});
 
