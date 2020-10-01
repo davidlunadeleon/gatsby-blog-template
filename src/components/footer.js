@@ -73,13 +73,11 @@ const Footer = ({ siteUrl, socialMedia }) => {
 
 	const addRssFeeds = () => {
 		return languages.map((lang) => {
+			const ref = `${siteUrl}/rss_${lang}.xml`;
 			return (
-				<li className={styles.footerElement}>
+				<li className={styles.footerElement} key={ref}>
 					<FaRssSquare />{" "}
-					<a
-						href={`${siteUrl}/rss_${lang}.xml`}
-						className="text-muted"
-					>
+					<a href={ref} className="text-muted">
 						RSS {languageName[lang]}
 					</a>
 				</li>

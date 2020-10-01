@@ -28,6 +28,22 @@ const flattenMessages = (nestedMessages, prefix = "") => {
 	}, {});
 };
 
+const getMessages = (language) => {
+	const messages = require(`./locales/${language}.json`);
+	return flattenMessages(messages);
+};
+
+const makeIntl = (lang, pagePath) => {
+	return {
+		language: lang,
+		languages,
+		messages: getMessages(lang),
+		routed: true,
+		originalPath: pagePath,
+		redirect: false
+	};
+};
+
 exports.onCreateNode = ({ node, getNode, actions }) => {
 	const { createNodeField } = actions;
 	if (node.internal.type === "MarkdownRemark") {
@@ -60,12 +76,6 @@ const pagesSet = new Set();
 
 exports.createPages = async ({ graphql, actions }) => {
 	const { createPage } = actions;
-
-	//Taken from: https://github.com/wiziple/gatsby-plugin-intl/issues/17#issuecomment-578427268
-	const getMessages = (language) => {
-		const messages = require(`./locales/${language}.json`);
-		return flattenMessages(messages);
-	};
 
 	const result = await graphql(`
 		query {
@@ -110,14 +120,7 @@ exports.createPages = async ({ graphql, actions }) => {
 			context: {
 				slug: node.fields.slug,
 				type: node.frontmatter.type,
-				intl: {
-					language: node.frontmatter.lang,
-					languages,
-					messages: getMessages(node.frontmatter.lang),
-					routed: true,
-					originalPath: node.fields.path,
-					redirect: false
-				}
+				intl: makeIntl(node.frontmatter.lang, node.fields.path)
 			}
 		});
 	});
@@ -146,14 +149,7 @@ exports.createPages = async ({ graphql, actions }) => {
 					currentPage: i + 1,
 					lang,
 					type: "static",
-					intl: {
-						language: lang,
-						languages,
-						messages: getMessages(lang),
-						routed: true,
-						originalPath: pagePath,
-						redirect: false
-					}
+					intl: makeIntl(lang, pagePath)
 				}
 			});
 		});
@@ -197,14 +193,7 @@ exports.createPages = async ({ graphql, actions }) => {
 						tag: tag.fieldValue,
 						lang,
 						type: "static",
-						intl: {
-							language: lang,
-							languages,
-							messages: getMessages(lang),
-							routed: true,
-							originalPath: pagePath,
-							redirect: false
-						}
+						intl: makeIntl(lang, pagePath)
 					}
 				});
 			});
