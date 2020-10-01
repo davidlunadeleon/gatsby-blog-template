@@ -22,12 +22,15 @@ const IndexPage = ({ data }) => {
 };
 
 export const query = graphql`
-	query {
+	query($language: String!) {
 		allMarkdownRemark(
 			limit: 3
 			skip: 0
 			sort: { fields: frontmatter___date, order: DESC }
-			filter: { fields: { slug: { regex: "/posts/" } } }
+			filter: {
+				fields: { slug: { regex: "/posts/" } }
+				frontmatter: { lang: { eq: $language } }
+			}
 		) {
 			edges {
 				node {

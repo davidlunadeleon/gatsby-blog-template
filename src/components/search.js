@@ -13,17 +13,21 @@ const Search = ({ searchIndex }) => {
 	const index = Index.load(searchIndex);
 
 	const search = (event) => {
-		setResults(
-			index
-				.search(event.target.value, { expand: true })
-				.map(({ ref }) => index.documentStore.getDoc(ref))
-				.slice(0, 6)
-		);
+		if (event.target.value === "") {
+			setResults([]);
+		} else {
+			setResults(
+				index
+					.search(event.target.value, { expand: true })
+					.map(({ ref }) => index.documentStore.getDoc(ref))
+					.slice(0, 6)
+			);
+		}
 	};
 
 	const listResults = () => {
 		return results.map((page) => (
-			<ListGroup.Item key={page.title}>
+			<ListGroup.Item key={page.id}>
 				<Link to={page.slug}>{page.title}</Link>
 			</ListGroup.Item>
 		));
