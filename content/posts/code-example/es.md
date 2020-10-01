@@ -1,7 +1,7 @@
 ---
-title: "This is a post with code in it"
+title: "Esta es una publicación con código"
 date: "2020-09-18"
-tags: ["programming", "code"]
+tags: ["programación", "código"]
 type: "post"
 author: "Me"
 authorUrl: "https://github.com/davidlunadeleon/gatsby-blog-template"
@@ -10,38 +10,38 @@ lang: "es"
 
 # Código chido
 
-I'm adding this post to test the rendering of code snippets in markdwon files.
+Agrego esta publicación para probar los fragmentos de código de los archivos de tipo markdown.
 
-## Testing with C++
+## Probando con C++
 
 ```cpp
 int main() {
-	std::cout << "Hello world!\n";
+	std::cout << "¡Hola mundo!\n";
 	return 0;
 }
 ```
 
-## Testing with C
+## Probando con C
 
 ```c
 int main(){
-	printf("Hello world!\n");
+	printf("¡Hola mundo!\n");
 	return 0;
 }
 ```
 
-## Testing with Javascript
+## Probando con Javascript
 
 ```js
 const printHelloWorld = () => {
-	console.log("Hello world!");
+	console.log("¡Hola mundo!");
 };
 
 printHelloWorld();
 ```
 
-## Test inline code fragments
+## Prueba de fragmentos de código entre líneas
 
-This text will have some inline code fragments like this one: `cpp±std::cout << "Hello world\n";`. I need this to be sure that these parts of the text don't look weird. These are useful when I want to use the name of a function like `js±printHelloWorld();` or when naming a variable like `cpp±int a;`. This inline code fragments are really important, if you ask me. It is weird when you are scrolling a post and then `cpp±int a = std::max(b, c);` appears and ends up looking ugly and breaking the flow of the text.
+Este texto tendrá algunso fragmentos de código entre líneas, como éste: `cpp±std::cout << "Hello world\n";`. Necesito esto para asegurarme de que estas partes del texto no se vean raras. Son útiles cuando quiero nombrar funciones como `js±printHelloWorld();` o al nombrar variables como `cpp±int a;`. Si me lo preguntas, estos fragmentos de código entre líneas son realmente importantes. Es raro cuando lees una publicación y luego `cpp±int a = std::max(b, c);` aparece y termina viéndose mal y rompiendo el flujo del texto.
 
-This is it for this test posts.
+Esto es todo por esta publicación.

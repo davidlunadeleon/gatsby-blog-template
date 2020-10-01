@@ -1,7 +1,7 @@
 ---
-title: "This is the third test"
+title: "Esta es la tercera prueba"
 date: "2020-08-08"
-tags: ["test", "blog post"]
+tags: ["prueba", "blog post"]
 type: "post"
 author: "Me"
 authorUrl: "https://github.com/davidlunadeleon/gatsby-blog-template"
@@ -10,12 +10,12 @@ lang: "es"
 
 # ¿Sabías que esto es un test?
 
-Here's a list of things a test can do:
+Aquí hay una lista que las pruebas pueden hacer:
 
--   Idk
--   test
--   more test
+-   No lo sé
+-   probar
+-   probar más
 
-## A note
+# Note
 
-This test is shorter than the others to keep it a 1 minute read.
+Esta prueba es más corta que las demás para mantenerla como una lectura de 1 minuto.

@@ -10,7 +10,7 @@ lang: "en"
 
 # Post with cool code
 
-I'm adding this post to test the rendering of code snippets in markdwon files.
+I'm adding this post to test the rendering of code snippets in markdown files.
 
 ## Testing with C++
 

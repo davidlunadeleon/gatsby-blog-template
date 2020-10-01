@@ -7,7 +7,7 @@ lang: "es"
 
 # Sobre mí
 
-Hi. I'm the person who made this blog. I made this blog because of reasons, of course. These reasons are so important that I made a blog just to blog about stuff. Sometimes, you just gotta make a blog to blog about stuff, you know? I don't really know what else to say, but I will fill the rest of this about me page with some other stuff.
+Hola. Soy la persona que hizo este blog. Hice este blog por algunas razones, claramente. Estas razones son tan importantes, que hice un blog para bloggear sobre cosas. A veces, uno tiene que hacer un blog para bloggear sobre csas, ¿sabes? Realmente no sé qué más decir, pero llenaré el resto de esta página sobre mí con algunas otras cosas.
 
 ## Lorem ipsum
 
@@ -15,9 +15,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porttitor elei
 
 Duis ut sapien dapibus, porta orci imperdiet, accumsan enim. Etiam libero ex, pellentesque accumsan eros eget, finibus maximus orci. Morbi ultricies aliquet bibendum. Nulla finibus iaculis lorem, non scelerisque orci pretium in. In ut nisi porttitor, fermentum neque tempor, gravida ante. Nunc massa leo, accumsan eget efficitur in, scelerisque eget libero. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean ex nisi, dignissim a sapien eu, congue interdum nisl.
 
-Generated 2 paragraphs, 171 words, 1186 bytes of [Lorem Ipsum](https://www.lipsum.com/)
+2 párrafos generados, 171 palabras, 1186 bytes de [Lorem Ipsum](https://www.lipsum.com/)
 
-## More lorem ipsum
+## Más lorem ipsum
 
 -   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 -   Praesent vitae elit vulputate, suscipit sem quis, faucibus leo.
@@ -27,11 +27,11 @@ Generated 2 paragraphs, 171 words, 1186 bytes of [Lorem Ipsum](https://www.lipsu
 -   Curabitur mattis leo id lobortis interdum.
 -   Suspendisse eu orci at diam lobortis rhoncus.
 
-Generated 2 paragraphs, 49 words, 361 bytes of [Lorem Ipsum](https://www.lipsum.com/)
+2 párrafos generados, 49 palabras, 361 bytes de [Lorem Ipsum](https://www.lipsum.com/)
 
-### Last but not least, a cool video
+### Por último pero no menos importante
 
-**Q:** Why a The Killers video?
-**A:** Because I like them.
+**P:** ¿Por qué un vídeo de The Killers?
+**R:** Porque me gustan.
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/gGdGFtwCNBE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
