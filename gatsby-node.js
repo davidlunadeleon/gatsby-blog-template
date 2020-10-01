@@ -89,7 +89,6 @@ exports.createPages = async ({ graphql, actions }) => {
 						frontmatter {
 							lang
 							type
-							title
 						}
 					}
 				}
