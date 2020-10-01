@@ -26,55 +26,62 @@ const Header = ({ siteTitle }) => {
 		}
 	`);
 
-	const makeLanguageList = () => {
-		return (
-			<IntlContextConsumer>
-				{({ languages, language: currentLocale }) =>
-					languages.map((language) => (
-						<NavDropdown.Item
-							key={language}
-							onClick={() => changeLocale(language)}
-						>
-							{languageName[language]}
-						</NavDropdown.Item>
-					))
-				}
-			</IntlContextConsumer>
-		);
+	const makeLanguageList = (languages) => {
+		return languages.map((language) => (
+			<NavDropdown.Item
+				key={language}
+				onClick={() => changeLocale(language)}
+			>
+				{languageName[language]}
+			</NavDropdown.Item>
+		));
 	};
 
 	return (
-		<Navbar
-			bg="dark"
-			variant="dark"
-			collapseOnSelect
-			expand="lg"
-			className={styles.navbarComplete}
-		>
-			<Navbar.Brand>
-				<Link className="navbar-brand" to="/">
-					{siteTitle}
-				</Link>
-			</Navbar.Brand>
-			<Navbar.Toggle aria-controls="responsive-navbar-nav" />
-			<Navbar.Collapse id="responsive-navbar-nav">
-				<Nav className="mr-auto">
-					<Link className="nav-link" to="/">
-						{intl.formatMessage({ id: "home" })}
-					</Link>
-					<Link className="nav-link" to="/posts">
-						{intl.formatMessage({ id: "posts" })}
-					</Link>
-					<Link className="nav-link" to="/about">
-						{intl.formatMessage({ id: "about" })}
-					</Link>
-					<NavDropdown title={intl.formatMessage({ id: "language" })}>
-						{makeLanguageList()}
-					</NavDropdown>
-				</Nav>
-				<Search searchIndex={data.siteSearchIndex.index} />
-			</Navbar.Collapse>
-		</Navbar>
+		<IntlContextConsumer>
+			{({ languages, language: currentLocale }) => {
+				return (
+					<Navbar
+						bg="dark"
+						variant="dark"
+						collapseOnSelect
+						expand="lg"
+						className={styles.navbarComplete}
+					>
+						<Navbar.Brand>
+							<Link className="navbar-brand" to="/">
+								{siteTitle}
+							</Link>
+						</Navbar.Brand>
+						<Navbar.Toggle aria-controls="responsive-navbar-nav" />
+						<Navbar.Collapse id="responsive-navbar-nav">
+							<Nav className="mr-auto">
+								<Link className="nav-link" to="/">
+									{intl.formatMessage({ id: "home" })}
+								</Link>
+								<Link className="nav-link" to="/posts">
+									{intl.formatMessage({ id: "posts" })}
+								</Link>
+								<Link className="nav-link" to="/about">
+									{intl.formatMessage({ id: "about" })}
+								</Link>
+								<NavDropdown
+									title={intl.formatMessage({
+										id: "language"
+									})}
+								>
+									{makeLanguageList(languages)}
+								</NavDropdown>
+							</Nav>
+							<Search
+								searchIndex={data.siteSearchIndex.index}
+								currLang={currentLocale}
+							/>
+						</Navbar.Collapse>
+					</Navbar>
+				);
+			}}
+		</IntlContextConsumer>
 	);
 };
 

@@ -107,7 +107,8 @@ module.exports = {
 					MarkdownRemark: {
 						title: (node) => node.frontmatter.title,
 						tags: (node) => node.frontmatter.tags,
-						slug: (node) => node.fields.slug,
+						slug: (node) => node.fields.path,
+						lang: (node) => node.frontmatter.lang,
 						id: (node) => node.id
 					}
 				}

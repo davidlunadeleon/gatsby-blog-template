@@ -6,7 +6,7 @@ import { BsSearch } from "react-icons/bs";
 
 import styles from "./search.module.css";
 
-const Search = ({ searchIndex }) => {
+const Search = ({ searchIndex, currLang }) => {
 	const intl = useIntl();
 
 	const [results, setResults] = useState([]);
@@ -16,12 +16,16 @@ const Search = ({ searchIndex }) => {
 		if (event.target.value === "") {
 			setResults([]);
 		} else {
-			setResults(
-				index
-					.search(event.target.value, { expand: true })
-					.map(({ ref }) => index.documentStore.getDoc(ref))
-					.slice(0, 6)
-			);
+			let ans = [];
+			index
+				.search(event.target.value, { expand: true })
+				.forEach(({ ref }) => {
+					const doc = index.documentStore.getDoc(ref);
+					if (doc.lang === currLang) {
+						ans.push(doc);
+					}
+				});
+			setResults(ans.slice(0, 6));
 		}
 	};
 
