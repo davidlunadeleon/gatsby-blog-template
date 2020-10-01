@@ -3,9 +3,10 @@ title: "This is the first test"
 date: "2020-09-09"
 tags: ["test", "blog post", "tag1"]
 type: "post"
+lang: "es"
 ---
 
-# Did you know that this is a test?
+# ¿Sabías que esto es un test?
 
 I know, test are amazing. I love them, and I know you do too.
 This is getting kinda long. Crazy, isn't it?

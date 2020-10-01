@@ -5,6 +5,7 @@ tags: ["programming", "code"]
 type: "post"
 author: "Me"
 authorUrl: "https://github.com/davidlunadeleon/gatsby-blog-template"
+lang: "en"
 ---
 
 # Post with cool code

@@ -5,9 +5,10 @@ tags: ["test", "blog post"]
 type: "post"
 author: "Me"
 authorUrl: "https://github.com/davidlunadeleon/gatsby-blog-template"
+lang: "es"
 ---
 
-# Did you know that this is a test?
+# ¿Sabías que esto es un test?
 
 Here's a list of things a test can do:
 

@@ -1,10 +1,11 @@
 ---
-title: "About me"
+title: "Sobre mí"
 date: "2020-09-14"
-type: "page"
+type: "static"
+lang: "es"
 ---
 
-# About me
+# Sobre mí
 
 Hi. I'm the person who made this blog. I made this blog because of reasons, of course. These reasons are so important that I made a blog just to blog about stuff. Sometimes, you just gotta make a blog to blog about stuff, you know? I don't really know what else to say, but I will fill the rest of this about me page with some other stuff.
 
