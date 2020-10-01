@@ -9,24 +9,64 @@
 const { createFilePath } = require("gatsby-source-filesystem");
 const path = require("path");
 
+const { languages } = require("./config");
+
+//Taken from:https://github.com/wiziple/gatsby-plugin-intl/issues/17#issuecomment-578427268
+
+const flattenMessages = (nestedMessages, prefix = "") => {
+	return Object.keys(nestedMessages).reduce((messages, key) => {
+		let value = nestedMessages[key];
+		let prefixedKey = prefix ? `${prefix}.${key}` : key;
+
+		if (typeof value === "string") {
+			messages[prefixedKey] = value;
+		} else {
+			Object.assign(messages, flattenMessages(value, prefixedKey));
+		}
+
+		return messages;
+	}, {});
+};
+
 exports.onCreateNode = ({ node, getNode, actions }) => {
 	const { createNodeField } = actions;
 	if (node.internal.type === "MarkdownRemark") {
-		const slug = createFilePath({
+		let slug = createFilePath({
 			node,
 			getNode,
 			basePath: "content/"
+		});
+		let path = slug;
+		languages.forEach((lang) => {
+			if (slug.includes(`/${lang}`)) {
+				path = slug.substring(0, slug.indexOf(`/${lang}`));
+				slug = `/${lang}${path}`;
+			}
 		});
 		createNodeField({
 			node,
 			name: "slug",
 			value: `${slug}`
 		});
+		createNodeField({
+			node,
+			name: "path",
+			value: `${path}`
+		});
 	}
 };
 
+const pagesSet = new Set();
+
 exports.createPages = async ({ graphql, actions }) => {
 	const { createPage } = actions;
+
+	//Taken from: https://github.com/wiziple/gatsby-plugin-intl/issues/17#issuecomment-578427268
+	const getMessages = (language) => {
+		const messages = require(`./locales/${language}.json`);
+		return flattenMessages(messages);
+	};
+
 	const result = await graphql(`
 		query {
 			allPosts: allMarkdownRemark {
@@ -34,6 +74,12 @@ exports.createPages = async ({ graphql, actions }) => {
 					node {
 						fields {
 							slug
+							path
+						}
+						frontmatter {
+							lang
+							type
+							title
 						}
 					}
 				}
@@ -59,11 +105,21 @@ exports.createPages = async ({ graphql, actions }) => {
 	`);
 
 	result.data.allPosts.edges.forEach(({ node }) => {
+		pagesSet.add(`/${node.frontmatter.lang}${node.fields.slug}`);
 		createPage({
 			path: node.fields.slug,
 			component: path.resolve("./src/templates/blog-post.js"),
 			context: {
-				slug: node.fields.slug
+				slug: node.fields.slug,
+				type: node.frontmatter.type,
+				intl: {
+					language: node.frontmatter.lang,
+					languages,
+					messages: getMessages(node.frontmatter.lang),
+					routed: true,
+					originalPath: node.fields.path,
+					redirect: false
+				}
 			}
 		});
 	});
@@ -106,4 +162,16 @@ exports.createPages = async ({ graphql, actions }) => {
 			});
 		});
 	});
+};
+
+exports.onCreatePage = async ({ page, actions }) => {
+	const { deletePage } = actions;
+
+	const isPage =
+		page.context.type === "post" || page.context.type === "static";
+	const isInvalidPath = !pagesSet.has(page.path);
+
+	if (isPage && isInvalidPath) {
+		deletePage(page);
+	}
 };

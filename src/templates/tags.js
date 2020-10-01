@@ -58,6 +58,7 @@ export const query = graphql`
 					timeToRead
 					fields {
 						slug
+						path
 					}
 				}
 			}
