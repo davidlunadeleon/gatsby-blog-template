@@ -111,7 +111,7 @@ See Gatsby's guide on how to deploy: [https://www.gatsbyjs.com/docs/deploying-an
 -   [x] Add Posts page.
 -   [x] Add Home page.
 -   [ ] Add Projects page.
--   [ ] Add custom 404 page.
+-   [x] Add custom 404 page.
 
 **Templates:**
 
@@ -127,8 +127,8 @@ See Gatsby's guide on how to deploy: [https://www.gatsbyjs.com/docs/deploying-an
 -   [x] Add header component with nav bar for site navigation.
 -   [x] Add pagination component to show number of pages and links to the previous or next page.
 -   [x] Add tags component to display list of tags present in a blog post.
--   [ ] Modify footer component to display site information.
--   [ ] Modify footer component to show links to social media.
+-   [x] Modify footer component to display site information.
+-   [x] Modify footer component to show links to social media.
 
 **General:**
 
