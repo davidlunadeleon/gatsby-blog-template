@@ -21,6 +21,8 @@ This template is a minimalist blog template with the following features:
 -   Post history navigation with pages. Additionally the same navigation of pages with tags.
 -   About me page written in markdown to tell the world about yourself.
 -   Search bar implemented with elasticlunr to help readers find a specific blog by title or tag.
+-   Support for multiple languages.
+-   Automatic RSS feed creation from blog posts.
 
 ## What this template does not do
 
@@ -28,7 +30,6 @@ If you wish to take this template and modify it, go ahead. Some features may be 
 
 If you just want to use it as it is and know it's limitations, then those are the following:
 
--   The author of each blog post is not specified. Although it can be added to each post as part of the markdown body.
 -   There is no image preview added to each post, like some blogs do.
 -   There is no image preview when sharing posts on social media.
 
@@ -129,10 +130,13 @@ See Gatsby's guide on how to deploy: [https://www.gatsbyjs.com/docs/deploying-an
 -   [x] Add tags component to display list of tags present in a blog post.
 -   [x] Modify footer component to display site information.
 -   [x] Modify footer component to show links to social media.
+-   [x] Add language selection in navbar
 
 **General:**
 
 -   [ ] Add image preview when sharing to social media.
+-   [x] Add multiple language support
+-   [x] Add RSS feed creation
 
 ## License
 
